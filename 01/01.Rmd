@@ -1,0 +1,18 @@
+# 01 - Table Mismatch
+
+Your team has been sharing a **penguin** data set for years with the format and column names seen in `the_usual.csv`
+
+You've just been sent a new file from a partner that doesn't quite match - `new_file.csv`
+
+## Goal
+
+- Fork this repository or download the two files at https://github.com/tidy-MN/weekly-exercise/01. 
+
+- Change the column names in *new_file.csv* so they match the column names in *the_usual.csv*. 
+
+- Save the file as *01_new_file_formatted.csv*.
+
+
+## :star: Bonus
+
+Combine the two tables (*the_usual.csv* and *01_new_file_formatted.csv*) and save the combined dataframe as *02_combined_data.csv*.
