@@ -15,6 +15,6 @@ You've just been sent a new file (`new_file.csv`) from a collaborator. Unfortuna
 - Save the file as `01_new_file_formatted.csv`.
 
 
-## :star: Bonus
+## Bonus
 
-Combine the two tables (*the_correct_format* and *01_new_file_formatted*) and save the combined dataframe as `02_combined_data.csv`.
+Combine the two tables `the_correct_format` and `01_new_file_formatted` and save the combined dataframe as `02_combined_data.csv`.
