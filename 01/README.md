@@ -1,8 +1,10 @@
-# 01 - Table Mismatch
+# 01 - Table Mismatch :penguin:
 
-Your team has been sharing a **penguin** data set for years with the precise format and column names seen in `correct_format.csv`
+<br>
 
-You've just been sent a new file (`new_file.csv`) from a collaborator. Unfortunately it doesn't match the requirements.
+> Your team has been sharing a **penguin** data set for years with the precise format and column names seen in `correct_format.csv`
+>
+> You've just been sent a new file (`new_file.csv`) from a collaborator. Unfortunately it doesn't match the requirements.
 
 <br>
 
@@ -14,6 +16,7 @@ You've just been sent a new file (`new_file.csv`) from a collaborator. Unfortuna
 
 - Save the file as `01_new_file_formatted.csv`.
 
+<br>
 
 ## Bonus
 
