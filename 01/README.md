@@ -2,7 +2,7 @@
 
 <br>
 
-> Your team has been sharing a **penguin** data set for years with the precise format and column names seen in `correct_format.csv`
+> Your team has been sharing a **penguin** data set for years with the precise format and column names seen in `correct_format.csv`.
 >
 > You've just been sent a new file (`new_file.csv`) from a collaborator. Unfortunately it doesn't match the requirements.
 
