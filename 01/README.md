@@ -10,7 +10,8 @@
 
 ## Goal
 
-- Create a new project and **Clone** [this repository](https://github.com/tidy-MN/weekly-exercise) or download the two files at https://github.com/tidy-MN/weekly-exercise/01. 
+- Create a new project and **Clone** [this repository](https://github.com/tidy-MN/weekly-exercise) by clicking the green <kbd>**<> Code**</kbd> button and copying the HTTPS link
+    - Or skip that and download the two CSV files at https://github.com/tidy-MN/weekly-exercise/01. 
 
 - Create a new R script named `table_mismatch_YOUR_INITIALS.R`
 
