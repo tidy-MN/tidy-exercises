@@ -12,7 +12,7 @@
 
 - Create a new project and **Clone** [this repository](https://github.com/tidy-MN/weekly-exercise) or download the two files at https://github.com/tidy-MN/weekly-exercise/01. 
 
-- Create a new R script named `table_mismatch_MyInitials.R`
+- Create a new R script named `table_mismatch_YOUR_INITIALS.R`
 
 - Change the column names in `new_file.csv` to match the column names in `correct_format.csv`. 
 
