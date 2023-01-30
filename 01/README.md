@@ -2,9 +2,9 @@
 
 <br>
 
-> Your Antartica team has been sharing a **penguin** data set for years with the precise format and column names found in `correct_format.csv`.
+> Your research team in Antartica has been sharing a **penguin** data set for years with the exact format and column names found in `correct_format.csv`.
 >
-> You've just been sent a new file named `new_file.csv` from a collaborator. Unfortunately it doesn't match your formatting requirements.
+> You've just been sent a new file named `new_file.csv` from a collaborator. Unfortunately it doesn't match your formatting requirements. Follow the steps below to get the data into the required format.
 
 <br>
 
