@@ -10,18 +10,18 @@
 
 ## Goal
 
-- Create a new project and **Clone** [this repository](https://github.com/tidy-MN/weekly-exercise) by clicking the green <kbd>**<> Code**</kbd> button and copying the HTTPS link
+1. Create a new project and **Clone** [this repository](https://github.com/tidy-MN/weekly-exercise) by clicking the green <kbd>**<> Code**</kbd> button and copying the HTTPS link
     - Or skip that and download the two CSV files at https://github.com/tidy-MN/weekly-exercise/01. 
 
-- Create a new R script named `table_mismatch_YOUR_INITIALS.R`
+1. Create a new R script named `table_mismatch_YOUR_INITIALS.R`
 
-- Change the column names in `new_file.csv` to match the column names in `correct_format.csv`. 
+1. Change the column names in `new_file.csv` to match the column names in `correct_format.csv`. 
 
-- Save the updated file to a CSV named `01_new_file_formatted.csv`
+1. Save the updated file to a CSV named `01_new_file_formatted.csv`
 
-- Save your script to the `solutions/` folder
+1. Save your script to the `solutions/` folder
 
-- If you cloned the repository, use the `Git` tab in RStudio to **Commit** and **Push** your saved R script back to GitHub
+1. If you cloned the repository, use the `Git` tab in RStudio to **Commit** and **Push** your saved R script back to GitHub
 
 <br>
 
