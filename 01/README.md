@@ -11,7 +11,17 @@
 ## Goal
 
 1. Create a new project and **Clone** [this repository](https://github.com/tidy-MN/weekly-exercise) by clicking the green <kbd>**<> Code**</kbd> button and copying the HTTPS link
-    - Or skip that and download the two CSV files at https://github.com/tidy-MN/weekly-exercise/01. 
+
+1. In RStudio, start a new Project:
+
+    - `File` > `New Project` > `Version Control` > `Git`.
+    - In “Repository URL”, paste the URL of your new GitHub link you copied: `https://github.com/tidy-MN/weekly-exercise.git` 
+    - Accept the default project directory name, i.e "weekly-exercise", which coincides with the GitHub repo name.
+    - Click `Create Project`
+    - You should find yourself in a new local RStudio Project that is a copy of everything from GitHub. 
+    - Look in RStudio’s file browser pane for the two CSV files for the exercise.
+
+1. *(Or skip all this Git stuff for now and just download the two CSV files at https://github.com/tidy-MN/weekly-exercise/01)* 
 
 1. Create a new R script named `table_mismatch_YOUR_INITIALS.R`
 
