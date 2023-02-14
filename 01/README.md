@@ -25,6 +25,6 @@
 
 <br>
 
-## Bonus
+## :star: Bonus
 
 Combine the two tables `correct_format` and `01_new_file_formatted` and save the combined dataframe as `02_combined_data.csv`.
