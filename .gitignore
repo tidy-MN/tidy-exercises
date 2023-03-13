@@ -29,4 +29,4 @@ vignettes/*.pdf
 .Renviron
 weekly-exercise.Rproj
 *.html
-01/solutions/*.csv
+*/solutions/*.csv
