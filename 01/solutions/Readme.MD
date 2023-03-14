@@ -65,7 +65,6 @@ correct %>%
 
 ## Renaming
 
-
 ### With caution
 ```r
 new <- new %>% rename(species = penguin_species)
@@ -74,6 +73,8 @@ new <- new %>% rename(species = penguin_species)
 ### Caution to the wind
 ```r
 # Have to rearrange columns first
+new <- new %>% relocate(island, .after = species) 
+
 names(new) <- names(correct) 
 ```
 
@@ -84,7 +85,7 @@ names(new) <- names(correct)
 ```r
 library(dplyr)
 
-new %>% relocate(island, .after = penguin_species) 
+new %>% relocate(island, .after = species) 
 ```
 
 ### `select()`
