@@ -33,15 +33,15 @@ new_stats <- group_by(new, penguin_species) %>%
 
 new_columns <- rename(new,species = penguin_species)
 
-all_data <- full_join(correct,new_columns)
+all_data <- full_join(correct, new_columns)
 
 ggplot(all_data, aes(x=body_mass_g, y= bill_length_mm, color = species)) +
   geom_point()
 
-ggplot(all_data, aes(x=island, y= species)) +
+ggplot(all_data, aes(x = island, fill = species)) +
   geom_bar()
 
 ggplot(all_data, aes(x=body_mass_g, y= bill_length_mm)) +
   geom_point() + 
-  facet_wrap(island)
+  facet_wrap(~island)
 
