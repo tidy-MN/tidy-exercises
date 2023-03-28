@@ -2,7 +2,8 @@
 
 <br>
 
-> :warning: We have a bit of an urgent situation on our hands. An evil competitor just purchased Tableau and they are shutting down the public server next week. Bad news.
+> :warning:  
+> We have a bit of an urgent situation on our hands. An evil competitor just purchased Tableau and they are shutting down the public server next week. Bad news.
 >
 > We need your help reproducing the mission critical dashboards before the lights go out. Let's start with the public [COVID vaccine report](https://www.health.state.mn.us/diseases/coronavirus/stats/vaccine.html) that organizations have come to depend on. Follow the steps below to get the data and save the day with a new version of the charts made in R. Good luck!
 
@@ -22,7 +23,7 @@
     - You should find yourself in a new RStudio Project with a copy of everything from GitHub. 
 
 - *Or skip all the Git stuff and download the three CSV files from https://github.com/tidy-MN/tidy-exercises/02-Tableau_Charts* 
-  - You can also do: `vax_trends <- read_csv('')`
+  - You can also do: `vax_trends <- readr::read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')`
 
 3. Create a new R script named `covid_charts_YOUR_INITIALS.R`
 
@@ -33,19 +34,19 @@ Feel free to use any of your favorite plotting packages or try something new. So
 
 ### 1. Use the `01_vax_trends.csv` to create a chart that shares the same information shown in the Tableau chart below. *You can ignore the dropdown filter.
 
-<img src='images/01_vax_trends.png' width='60%' align='center'>
+<img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/01_vax_trends.png' width='60%' align='center'>
 
 <br>
 
 ### 2. Create a chart showing the vax rates by age group using data in `02_agegroup_vax_rates.csv`.
 
-<img src='images/02_vax_by_age.png' width='60%' align='center'>
+<img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/02_vax_by_age.png' width='60%' align='center'>
 
 <br>
 
 ### 3. Recreate the county map using the `03_county_vax_rates.csv` data.
 
-<img src='images/03_vaccine_map.png' width='55%'>
+<img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/03_vaccine_map.png' width='55%'>
 
 ---
 
