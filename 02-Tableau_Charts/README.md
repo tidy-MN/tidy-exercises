@@ -22,8 +22,9 @@
     - Click `Create Project`
     - You should find yourself in a new RStudio Project with a copy of everything from GitHub. 
 
-- *Or skip all the Git stuff and download the three CSV files from https://github.com/tidy-MN/tidy-exercises/02-Tableau_Charts* 
-  - You can also do: `vax_trends <- readr::read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')`
+- Or skip all the Git stuff and download the three CSV files from https://github.com/tidy-MN/tidy-exercises/02-Tableau_Charts
+
+- You can also do: `vax_trends <- readr::read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')`
 
 3. Create a new R script named `covid_charts_YOUR_INITIALS.R`
 
@@ -69,7 +70,7 @@ Create an R Markdown html document with your charts.
 1. Add your charts
     - Put your R code into an existing R chunk, or add a new one for each of your charts.
 1. Add 1 more R chunk to make a table of the data in `bonus/04_product_doses`.      
-    - <img src='images/04_product_doses.png' width='45%'> 
+    - <img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/04_product_doses.png' width='45%'> 
 1. Click the ball of yarn that says `Knit` next to it.
 1. Voila!
 
