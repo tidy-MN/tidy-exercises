@@ -27,6 +27,7 @@ vignettes/*.pdf
 *.knit.md
 # R Environment Variables
 .Renviron
-weekly-exercise.Rproj
+tidy-exercise.Rproj
 *.html
-*/solutions/*.csv
+*solutions/*.csv
+*.html

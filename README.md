@@ -1,5 +1,5 @@
 # :seedling: Weekly R exercises
 
-- [01 - Table Mismatch](01/)
-
+- [01 - Penguin Mismatch](01-Penguin_Mismatch/)
+- [02 - Tableau Charts](02-Tableau_Charts/)
 

@@ -1,0 +1,22 @@
+﻿agegroup,vaccine_status,category,value
+0.5-4,Up to date,Age,0.066755345
+0.5-4,Completed vaccine series,Age,0.114638593
+0.5-4,At least one dose,Age,0.200405057
+5-11,Up to date,Age,0.088271357
+5-11,Completed vaccine series,Age,0.418660677
+5-11,At least one dose,Age,0.457859476
+12-15,Up to date,Age,0.135664355
+12-15,Completed vaccine series,Age,0.638829260
+12-15,At least one dose,Age,0.681159869
+16-17,Up to date,Age,0.138465926
+16-17,Completed vaccine series,Age,0.669040978
+16-17,At least one dose,Age,0.707278052
+18-49,Up to date,Age,0.167299145
+18-49,Completed vaccine series,Age,0.696876597
+18-49,At least one dose,Age,0.744800683
+50-64,Up to date,Age,0.304603018
+50-64,Completed vaccine series,Age,0.783876080
+50-64,At least one dose,Age,0.808859450
+65+,Up to date,Age,0.628563243
+65+,Completed vaccine series,Age,0.916715772
+65+,At least one dose,Age,0.942680663
