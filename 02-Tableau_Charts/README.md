@@ -6,11 +6,13 @@
 >  
 > We have a bit of an urgent situation on our hands. An evil competitor just purchased Tableau and they are shutting down the public server next week. Bad news.
 >
-> We need your help reproducing the mission critical dashboards before the lights go out. Let's start with the public [COVID vaccine report](https://www.health.state.mn.us/diseases/coronavirus/stats/vaccine.html) that organizations have come to depend on. Follow the steps below to get the data and save the day with a new version of the charts made in R. Good luck!
+> We need your help reproducing the mission critical dashboards before the lights go out. Let's start with the very important public [COVID Vaccine Report](https://www.health.state.mn.us/diseases/coronavirus/stats/vaccine.html). Follow the steps below to get the data and save the day with a new version of the charts made in R. 
+>
+> Good luck!
 
 <br>
 
-## Setup
+# Setup
 
 
 1. We will clone [this repository](https://github.com/tidy-MN/tidy-exercises) by first clicking the green <kbd>**<> Code**</kbd> button and copying the HTTPS link.
@@ -18,19 +20,19 @@
 2. In RStudio, start a new Project:
 
     - `File` > `New Project` > `Version Control` > `Git`.
-    - In [Repository URL], paste the URL of the GitHub link you copied: `https://github.com/tidy-MN/tidy-exercises.git` 
-    - Accept the default project directory name, i.e "tidy-exercises", which coincides with the GitHub repo name.
+    - In [Repository URL] - paste the URL of the GitHub link you copied: `https://github.com/tidy-MN/tidy-exercises.git` 
+    - Accept the default project directory name, i.e "tidy-exercises", which matches the GitHub name.
     - Click `Create Project`
     - You should find yourself in a new RStudio Project with a copy of everything from GitHub. 
 
 - Or skip all the Git stuff and download the three CSV files from https://github.com/tidy-MN/tidy-exercises/02-Tableau_Charts
 
-- You can also do: `vax_trends <- readr::read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')`
+- You can also do: `readr::read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')`
 
-3. Create a new R script named `covid_charts_YOUR_INITIALS.R`
+3. Create a new R script named: `covid_charts_YOUR_INITIALS.R`
 
 
-## Goal
+# Goal
 
 Feel free to use any of your favorite plotting packages or try something new. Some options include `ggplot2`, `plotly`, and `leaflet`.
 
@@ -52,7 +54,7 @@ Feel free to use any of your favorite plotting packages or try something new. So
 
 ---
 
-### :heart_eyes_cat: **Congrats!** 
+# :heart_eyes_cat: **Congrats!** 
 
 1. Save your R script to the `solutions/` folder
 
@@ -61,7 +63,7 @@ Feel free to use any of your favorite plotting packages or try something new. So
 
 <br>
 
-## :star: Bonus
+# :star: Bonus
 
 Create an R Markdown html document with your charts.
 
@@ -71,7 +73,7 @@ Create an R Markdown html document with your charts.
 1. Add your charts
     - Put your R code into an existing R chunk, or add a new one for each of your charts.
 1. Add 1 more R chunk to make a table of the data in `bonus/04_product_doses.csv`      
-    - <img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/04_product_doses.png' width='45%'> 
+    - <img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/04_product_doses.png' width='50%'> 
 1. Click the ball of yarn that says `Knit` next to it.
 1. Voila!
 
