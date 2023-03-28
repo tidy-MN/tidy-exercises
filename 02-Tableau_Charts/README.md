@@ -70,7 +70,7 @@ Create an R Markdown html document with your charts.
 1. Click `OK`
 1. Add your charts
     - Put your R code into an existing R chunk, or add a new one for each of your charts.
-1. Add 1 more R chunk to make a table of the data in `bonus/04_product_doses`.      
+1. Add 1 more R chunk to make a table of the data in `bonus/04_product_doses.csv`      
     - <img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/04_product_doses.png' width='45%'> 
 1. Click the ball of yarn that says `Knit` next to it.
 1. Voila!
