@@ -2,7 +2,8 @@
 
 <br>
 
-> :warning:  
+> :warning: 
+>  
 > We have a bit of an urgent situation on our hands. An evil competitor just purchased Tableau and they are shutting down the public server next week. Bad news.
 >
 > We need your help reproducing the mission critical dashboards before the lights go out. Let's start with the public [COVID vaccine report](https://www.health.state.mn.us/diseases/coronavirus/stats/vaccine.html) that organizations have come to depend on. Follow the steps below to get the data and save the day with a new version of the charts made in R. Good luck!
@@ -51,7 +52,7 @@ Feel free to use any of your favorite plotting packages or try something new. So
 
 ---
 
-### **Congrats!** :heart_eyes_cat:
+### :heart_eyes_cat: **Congrats!** 
 
 1. Save your R script to the `solutions/` folder
 
