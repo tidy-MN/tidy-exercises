@@ -42,15 +42,36 @@ Feel free to use any of your favorite plotting packages or try something new. So
 
 <br>
 
+```r
+library(tidyverse)
+
+vax <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')
+```
+<br>
+
 ### 2. Create a chart showing the vax rates by age group using data in `02_agegroup_vax_rates.csv`.
 
 <img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/02_vax_by_age.png' width='60%' align='center'>
 
 <br>
 
+```r
+library(tidyverse)
+
+vax2 <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/02_agegroup_vax_rates.csv')
+```
+<br>
+
 ### 3. Recreate the county map using the `03_county_vax_rates.csv` data.
 
 <img src='https://tidy-mn.github.io/tidy-exercises/02-Tableau_Charts/images/03_vaccine_map.png' width='55%'>
+
+```r
+library(tidyverse)
+
+vax3 <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/03_county_vax_rates.csv')
+```
+<br>
 
 ---
 
