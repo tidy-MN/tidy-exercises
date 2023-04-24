@@ -1,0 +1,129 @@
+---
+title: "COVID-19 SITUATION UPDATE"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(plotly)
+library(mncolors)
+library(tigris)
+library(sf)
+library(leaflet)
+library(tidycensus)
+library(glue)
+
+mn_colors <- c(mncolors(2) %>% rev(), mncolors(4, 'extended')[3])
+
+size20 <- list(size = 20)
+
+```
+
+```{r read_data, cache=TRUE, include=FALSE}
+vax_cnty <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/03_county_vax_rates.csv')
+
+mn_cnty <- counties(state = 27)
+
+mn_pops <- get_estimates(
+  geography = "county",
+  variables = "POP",
+  state = "MN",
+  year = 2019
+)
+
+vax <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/01_vax_trends.csv')
+
+vax_age <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/02_agegroup_vax_rates.csv')
+
+```
+
+## Up to date vaccinations by county
+
+```{r up_to_date_map}
+
+mn_cnty <- mutate(mn_cnty, across(GEOID, as.integer))
+
+vax_cnty2 <- inner_join(mn_cnty, vax_cnty, by = "GEOID") %>%
+  inner_join(mn_pops %>% mutate(across(GEOID, as.numeric)), by = "GEOID") %>%
+  st_transform(4326) %>%
+  mutate(up_to_date = round(100 * `People up to date with vaccine doses` / value, 1))
+
+bins <- c(0, 20, 40, 60, 80, 100)
+pal <- colorBin(mncolors(5, palette = 'blue'),
+         pull(vax_cnty2, up_to_date),
+         bins
+         )
+
+popupinfo <- "<h3>{up_to_date}% of residents in {NAMELSAD} are up-to-date</h3>"
+
+leaflet(vax_cnty2,
+        options = leafletOptions(zoomControl = FALSE,
+                                 minZoom = 6, maxZoom = 6,
+                                 dragging = FALSE)) %>%
+          addPolygons(fillColor=~pal(up_to_date),
+                      fillOpacity = 1,
+                      color = "black",
+                      weight = 3,
+                      popup = ~glue(popupinfo)
+          ) %>%
+          addLegend(pal = pal, values = ~up_to_date, opacity = 1, title = "",
+                    labFormat = labelFormat(suffix = '%', between = '% &ndash; '))
+```
+
+## People Vaccinated Over Time
+
+```{r over_time_area}
+
+vax2 <- clean_names(vax)
+
+vax2 <- mutate(vax2, across(week_start_date, ymd)) %>%
+  drop_na(week_start_date) %>%
+  pivot_longer(contains("vaccine")) %>%
+  arrange(name, week_start_date) %>%
+  mutate(across(name, ~recode(.,
+                              at_least_one_vaccine_dose = "At least one dose",
+                              completed_vaccine_series = "Completed vaccine series",
+                              up_to_date_vaccine_doses = "Up to date"
+                              )),
+         label = ifelse(week_start_date == max(week_start_date, na.rm = TRUE),
+                        paste0(value, '%'), NA)
+         )
+
+plot_ly(vax2, x= ~week_start_date, y= ~value,
+          alpha = 1, text = ~label
+        ) %>%
+  add_markers(type = "scatter", mode = "markers", color = ~name, colors = rev(mn_colors), fill = "tozeroy") %>%
+  add_text(textfont = size20 %>% c(color = 'black'),
+           textposition = "top left",
+           showlegend = FALSE) %>%
+  layout(xaxis = list(title = '', tickfont = size20),
+         yaxis = list(title = '', ticksuffix="%", tickfont = size20))
+```
+
+## Proportion of population vaccinated by Age
+
+```{r vax_by_age_bar}
+
+
+vax_age2 <- mutate(vax_age,
+                  across(c(agegroup, vaccine_status), ~factor(., levels = . %>% unique() %>% rev())),
+                  across(c(vaccine_status), ~factor(., levels = . %>% unique())),
+                  across(value, ~round(.*100, 1))
+                  )
+
+plot_ly(vax_age2, x= ~value, y= ~agegroup, color = ~vaccine_status,
+        colors = mn_colors, text = ~paste0(value, "%"),
+        textposition = 'outside',
+        textfont = list(color = "black", size = 20)) %>%
+  add_bars() %>%
+  layout(title = list(text = ''),
+         xaxis = list(title = '', tickfont = size20, ticksuffix = '%', range = c(0,110)),
+         yaxis = list(title = '', tickfont = size20),
+         legend = list(orientation = 'h', font = size20),
+         height = 700
+  )
+```
