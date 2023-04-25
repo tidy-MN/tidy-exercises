@@ -1,3 +1,3 @@
-# Week 2 Summarized
+# 02 - Solution Summary
 
 
