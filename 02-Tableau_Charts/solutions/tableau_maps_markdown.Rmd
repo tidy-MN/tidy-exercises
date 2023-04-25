@@ -1,0 +1,192 @@
+---
+title: "COVID-19 Situation Update"
+author: "MDH"
+date: '`r format(Sys.Date(), "%b %d, %Y")`'
+output:
+  mnreports::html_document:
+    number_sections: true
+    toc: true
+    toc_depth: 1 
+    fig_caption: true
+    highlight: haddock 
+    css: resources/mn_style.css
+    includes:
+      before_body: resources/mdh_banner_white.html #mdh_banner_blue.html
+      after_body: resources/mdh_footer.html
+#knit: pagedown::chrome_print 
+---
+
+
+```{r setup, include=F}
+# Set chunk options for report
+knitr::opts_chunk$set(message=F, warning=F, comment="", eval=T)
+```
+
+<br>
+
+```{r, include=F}
+library(tidyverse)
+#library(ggmap)
+library(janitor)
+library(mncolors)
+library(showtext)
+
+library(tigris)
+library(leaflet)
+library(glue)
+
+# County borders
+counties <- map_data("county", region = "Minnesota")
+
+ggplot(data = counties,
+       mapping = aes(x = long, y = lat, group = subregion, fill = subregion)) +
+  geom_polygon() + 
+  guides(fill = "none")
+
+# Vax rates
+vax <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/03_county_vax_rates.csv') %>% 
+       clean_names() %>% 
+       filter(age_group == "Total")
+
+names(vax)
+
+vax <- vax %>%
+       mutate(subregion = tolower(county))
+
+# Split rates into 5 bins for legend
+vax <- mutate(vax, 
+              vax_bin = cut(percent_up_to_date_with_vaccine_doses,
+                            breaks = seq(0, 100, 20)))
+
+# Join to map borders
+counties <- left_join(counties, vax)
+
+# Color by "up to date" Vax rate
+map <- ggplot(data = counties,
+              aes(x = long, y = lat, 
+                  group = subregion,
+                  fill  = vax_bin)) +
+  geom_polygon(color = "grey50", linewidth = 0.25, alpha = 0.9) + 
+  scale_fill_manual(values = mn_pal("blue")(8)[4:8],
+                    labels = c("0-20%","40%","60%","80%", "100%"),
+                    drop = FALSE) +
+  labs(title = "COVID-19 vaccinations", 
+       subtitle = "Up to date vaccine rates by county",
+       caption = paste("Data updated on", counties$reported_date[1]),
+       fill = "") +
+  guides(fill = guide_legend(reverse = TRUE)) +
+  theme_void(base_size = 20)
+
+map
+
+map +
+  theme(legend.position = c(0.85,.43),
+        plot.caption.position = "plot",
+        plot.caption = element_text(size = 12, face = "italic"))
+        #plot.caption = element_text(hjust = 0)) #left-align
+```
+
+<br>
+
+> `library(ggplot)`
+
+<br>
+
+```{r, echo=F, out.width="45%", fig.height=10}
+# Add fonts
+library(showtext)
+
+fonts <- font_files() %>% tibble()
+
+font_add("AN", regular = "ARIALN.TTF")
+
+font_add("comic", regular = "comic.ttf")
+
+showtext_auto(enable = T)
+
+map +
+  theme(text = element_text(family = "AN", size = 60, margin = margin(0,0,0,0, "cm")),
+        plot.title = element_text(family = "AN", size = 100),
+        plot.subtitle = element_text(family = "AN", size = 80),
+        plot.caption = element_text(family = "AN", size = 40),
+        legend.position = c(0.86,.43),
+        legend.key.width = unit(0.8, "cm"),
+        legend.key.height = unit(0.8, "cm"),
+        legend.spacing.x = unit(0.2, 'cm'),
+        plot.caption.position = "plot")
+
+```
+
+
+<br>
+
+> `library(plotly)`
+
+<br>
+
+```{r, echo=F, out.width="45%", fig.height=5.5}
+library(plotly)
+
+ggplotly(map +
+  theme(legend.position = c(0.85,.43),
+        plot.caption.position = "plot",
+        plot.caption = element_text(size = 12, face = "italic")))
+```
+
+<br>
+
+> `library(leaflet)`
+
+<br>
+
+```{r, include=F}
+# Leaflet map
+county_shapes <- tigris::counties(state = "MN", cb = TRUE)
+
+# FIPs code reference table
+fips_ref <- read_csv("https://github.com/tidy-MN/mnreference/raw/main/data/County%20names%20-%20Join%20alt%20spellings.csv")
+
+# Join FIPs code to vax data
+vax <- left_join(vax, fips_ref, by = c("county" = "alt_spelling"))
+
+# Join vax data to county chapes
+county_shapes <- left_join(county_shapes %>% mutate(GEOID = as.numeric(GEOID)), 
+                           vax %>% select(fips, percent_up_to_date_with_vaccine_doses, vax_bin), by = c("GEOID" = "fips"))
+
+pal <- colorNumeric(
+        palette = mn_pal("blue")(8)[4:8],
+        domain = county_shapes$percent_up_to_date_with_vaccine_doses) #county_shapes$vax_bin)
+
+```
+
+
+<style>
+.leaflet {background: #FFF;}
+.sub {margin-top: -18px; margin-bottom: 0;}
+.legend {margin-bottom: 90px !important;}
+.leaflet-popup-content {font-size: 150%;}
+</style>
+
+
+## COVID-19 vaccinations
+
+<p class="sub">Up to date vaccine rates by county</p>
+
+```{r, echo=F, out.width="42%", fig.height=4.7}
+leaflet(county_shapes %>% sf::st_transform(4326),
+        options = leafletOptions(zoomControl = FALSE)) %>%
+  setView(lat = 46.3, lng = -93.6, zoom = 6) %>%
+  addPolygons(color = "gray", 
+              opacity = 0.85, 
+              weight  = 0.5,
+              fillColor = ~pal(percent_up_to_date_with_vaccine_doses),
+              fillOpacity = 0.8,
+              popup = ~glue("<h3>{NAMELSAD}</h3>  <b>{percent_up_to_date_with_vaccine_doses}</b>%<br>Vaccine rate")) %>%
+  addLegend("bottomright",
+            #pal = pal, 
+            #values = ~percent_up_to_date_with_vaccine_doses,
+            colors = mn_pal("blue")(8)[4:8] %>% rev,
+            labels = c("0-20%","40%","60%","80%", "100%") %>% rev,
+            opacity = 0.8,
+            title = "")
+```
