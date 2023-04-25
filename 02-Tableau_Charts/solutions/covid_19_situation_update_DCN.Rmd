@@ -24,7 +24,7 @@ size20 <- list(size = 20)
 ```
 
 ```{r read_data, cache=TRUE, include=FALSE}
-vax_cnty <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/03_county_vax_rates.csv')
+vax_cnty <- read_csv('https://raw.githubusercontent.com/tidy-MN/tidy-exercises/main/02-Tableau_Charts/03_county_vax_totals.csv')
 
 mn_cnty <- counties(state = 27)
 
