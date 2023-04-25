@@ -1,4 +1,4 @@
-# Week 1 Summarized
+# 01 - Solution Summary
 
 
 ## Load data
