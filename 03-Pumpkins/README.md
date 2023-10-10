@@ -3,3 +3,7 @@
 ### Link to Pumpkin data source!
 
 <http://www.bigpumpkins.com/WeighoffResultsGPC.aspx?c=P&y=2023>
+
+### How to measure Over-the-top (OTT) of a GIANT pumpkin!
+
+<https://www.youtube.com/watch?v=Cd1S8gUC-Ew&ab_channel=tremor6614>
